@@ -1,0 +1,2 @@
+name	pdb	a_chain	old_allele	new_allele	mhc_mutations    	peptide_chain	old_peptide	new_peptide	peptide_mutations	compatibility_score	rmsd
+mutated0.pdb	4hx1	A	A*68:02	A*02:01	13	C	SVYDFFVWL	YLLMWITQV	9	8.7	2.90

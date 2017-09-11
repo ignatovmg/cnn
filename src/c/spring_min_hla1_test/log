@@ -1,0 +1,122 @@
+
+Changing to 4l3c
+
+
+=============================================
+Operating on 4hx1
+
+New allele: A*02:01:01:01
+Compability score: 8.650000
+
+======= MHC business =======
+
+	Old: ------------------------GSHSMRYFYTSMSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDRNTRNVKAQSQTDRVDLGTLRGYYNQSEAGSHTIQRMYGCDVGPDGRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQWRAYLEGTCVEWLRRYLENGKETLQRTDAPKTHMTHHAVSDHEATLRCWALSFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWVAVVVPSGQEQRYTCHVQHEGLPKPLTLKW-------------------------------------------------------------------
+	New: MAVMAPRTLVLLLSGALALTQTWAGSHSMRYFFTSVSRPGRGEPRFIAVGYVDDTQFVRFDSDAASQRMEPRAPWIEQEGPEYWDGETRKVKAHSQTHRVDLGTLRGYYNQSEAGSHTVQRMYGCDVGSDWRFLRGYHQYAYDGKDYIALKEDLRSWTAADMAAQTTKHKWEAAHVAEQLRAYLEGTCVEWLRRYLENGKETLQRTDAPKTHMTHHAVSDHEATLRCWALSFYPAEITLTWQRDGEDQTQDTELVETRPAGDGTFQKWAAVVVPSGQEQRYTCHVQHEGLPKPLTLRWEPSSQPTIPIVGIIAGLVLFGAVITGAVVAAVMWRRKSSDRKGGSYSQAASSDSAQGSDVSLTACKV
+
+MHC mutations: 13
+
+
+===== Peptide business =====
+
+	Old: SVYDFFVWL
+	New: YLLMWITQV
+
+Peptide mutations: 9
+
+
+Mutagenesis: 
+
+(8, 'Y', 'F')
+Selected!
+ Mutagenesis: 3 rotamers loaded.
+ Mutagenesis: 3 rotamers loaded.
+(11, 'M', 'V')
+Selected!
+ Mutagenesis: 5 rotamers loaded.
+ Mutagenesis: 2 rotamers loaded.
+(61, 'R', 'G')
+Selected!
+ Mutagenesis: 2 rotamers loaded.
+ Mutagenesis: no rotamers found in library.
+(62, 'N', 'E')
+Selected!
+ Mutagenesis: no rotamers found in library.
+ Mutagenesis: 15 rotamers loaded.
+(65, 'N', 'K')
+Selected!
+ Mutagenesis: 13 rotamers loaded.
+ Mutagenesis: 17 rotamers loaded.
+(69, 'Q', 'H')
+Selected!
+ Mutagenesis: 17 rotamers loaded.
+ Mutagenesis: 7 rotamers loaded.
+(73, 'D', 'H')
+Selected!
+ Mutagenesis: 7 rotamers loaded.
+ Mutagenesis: 7 rotamers loaded.
+(94, 'I', 'V')
+Selected!
+ Mutagenesis: 6 rotamers loaded.
+ Mutagenesis: 3 rotamers loaded.
+(104, 'P', 'S')
+Selected!
+ Mutagenesis: 3 rotamers loaded.
+ Mutagenesis: 3 rotamers loaded.
+(106, 'G', 'W')
+Selected!
+ Mutagenesis: 3 rotamers loaded.
+ Mutagenesis: 5 rotamers loaded.
+(155, 'W', 'L')
+Selected!
+ Mutagenesis: 7 rotamers loaded.
+ Mutagenesis: 4 rotamers loaded.
+(244, 'V', 'A')
+Selected!
+ Mutagenesis: 5 rotamers loaded.
+ Mutagenesis: no rotamers found in library.
+(272, 'K', 'R')
+Selected!
+ Mutagenesis: no rotamers found in library.
+ Mutagenesis: 20 rotamers loaded.
+(0, 'S', 'Y')
+Selected!
+ Mutagenesis: no phi/psi, using backbone-independent rotamers.
+ Mutagenesis: 81 rotamers loaded.
+ Mutagenesis: no phi/psi, using backbone-independent rotamers.
+ Mutagenesis: 6 rotamers loaded.
+(1, 'V', 'L')
+Selected!
+ Mutagenesis: 4 rotamers loaded.
+ Mutagenesis: 2 rotamers loaded.
+(2, 'Y', 'L')
+Selected!
+ Mutagenesis: 2 rotamers loaded.
+ Mutagenesis: 2 rotamers loaded.
+(3, 'D', 'M')
+Selected!
+ Mutagenesis: 6 rotamers loaded.
+ Mutagenesis: 9 rotamers loaded.
+(4, 'F', 'W')
+Selected!
+ Mutagenesis: 13 rotamers loaded.
+ Mutagenesis: 5 rotamers loaded.
+(5, 'F', 'I')
+Selected!
+ Mutagenesis: 6 rotamers loaded.
+ Mutagenesis: 3 rotamers loaded.
+(6, 'V', 'T')
+Selected!
+ Mutagenesis: 6 rotamers loaded.
+ Mutagenesis: 3 rotamers loaded.
+(7, 'W', 'Q')
+Selected!
+ Mutagenesis: 3 rotamers loaded.
+ Mutagenesis: 11 rotamers loaded.
+(8, 'L', 'V')
+Selected!
+ Mutagenesis: no phi/psi, using backbone-independent rotamers.
+ Mutagenesis: 36 rotamers loaded.
+ Mutagenesis: no phi/psi, using backbone-independent rotamers.
+ Mutagenesis: 3 rotamers loaded.
+(81, 81)
+Peptide RMSD: 2.89590382576

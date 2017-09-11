@@ -68,9 +68,10 @@ int main(int argc, char** argv)
 	char* psf   = argv[2];
 	char* prm   = argv[3];
 	char* rtf   = argv[4];
-	char* ffix  = argv[5];
-	char* sfile = argv[6];
-	char* out   = argv[7];
+	char* ffix1 = argv[5];
+	char* ffix2 = argv[6];
+	char* sfile = argv[7];
+	char* out   = argv[8];
 
 	struct mol_atom_group *ag = mol_read_pdb(pdb);
 
@@ -78,14 +79,18 @@ int main(int argc, char** argv)
 	ag->gradients = calloc(ag->natoms, sizeof(struct mol_vector3));
 	mol_fixed_init(ag);	
 
-	int  nfix = 0;
-	size_t* fix;
-	read_fix(ffix, &nfix, &fix);
-	mol_fixed_update(ag, nfix, fix);
+	int     nfix1 = 0;
+	size_t* fix1;
+	read_fix(ffix1, &nfix1, &fix1);
+	
+	int     nfix2 = 0;
+	size_t* fix2;
+	read_fix(ffix2, &nfix2, &fix2);
+	
+	mol_fixed_update(ag, nfix1, fix1);
+	//mol_fixed_update(ag, nfix2, fix2);
 	//mol_fixed_update(ag, 0, NULL);
-
-	struct mol_vector3 *orig_coords = calloc(ag->natoms, sizeof(struct mol_vector3));
-	memcpy(orig_coords, ag->coords, ag->natoms*sizeof(struct mol_vector3));
+	printf("IDK why but it fails without this line\n");
 	
 	struct agsetup ags;
 	init_nblst(ag, &ags);
@@ -93,10 +98,11 @@ int main(int argc, char** argv)
 	
 	struct acesetup ace_setup;
 	ace_setup.efac = 0.5;
+
 	ace_ini(ag, &ace_setup);
 	ace_fixedupdate(ag, &ags, &ace_setup);
 	ace_updatenblst(&ags, &ace_setup);
-	
+
 	struct springset *sprst;
     read_springset(ag, sfile, &sprst);
 
@@ -106,7 +112,43 @@ int main(int argc, char** argv)
 	engpar.ace_setup = &ace_setup;
     engpar.sprst = sprst;
 
-	mol_minimize_ag(MOL_LBFGS, 1000, 1E-3, ag, (void *)(&engpar), energy_func);
+	//printf("\nFirst step\n");
+	mol_minimize_ag(MOL_LBFGS, 100, __TOL__, ag, (void *)(&engpar), energy_func);
+	
+	mol_fixed_update(ag, nfix2, fix2);
+	//mol_fixed_update(ag, 0, NULL);
+	ace_fixedupdate(ag, &ags, &ace_setup);
+	ace_updatenblst(&ags, &ace_setup);
+	
+	//printf("\nSecond step\n");
+	mol_minimize_ag(MOL_LBFGS, 1000, __TOL__, ag, (void *)(&engpar), energy_func);
+	
+	/*lbfgsfloatval_t energy = 0.0;
+    
+	//if (array != NULL) {
+	//	mol_atom_group_set_actives(ag, array);
+	//}
+	//bool updated = check_clusterupdate(ag, &ags);
+	//if (updated) {
+	ace_updatenblst(&ags, &ace_setup);
+	//}
+	
+	//reset energy
+	mol_zero_gradients(ag);
+	aceeng(ag, &energy, &ace_setup, &ags);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	vdweng(ag, &energy, ags.nblst);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	vdwengs03(1.0, ags.nblst->nbcof, ag, &energy, ags.nf03, ags.listf03);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	beng(ag, &energy);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	aeng(ag, &energy);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	teng(ag, &energy);
+	printf("Final energy: %f\n", energy); energy = 0.0;
+	ieng(ag, &energy);
+	printf("Final energy: %f\n", energy); energy = 0.0;*/
 
 	mol_write_pdb(out, ag);
 	
@@ -125,17 +167,15 @@ static lbfgsfloatval_t energy_func(
 	struct energy_prm* energy_prm = (struct energy_prm*) prm;
     
 	if (array != NULL) {
-		//ck_assert((size_t) array_size == energy_prm->ag->active_atoms->size * 3);
 		mol_atom_group_set_actives(energy_prm->ag, array);
 	}
 	bool updated = check_clusterupdate(energy_prm->ag, energy_prm->ag_setup);
 	if (updated) {
 		ace_updatenblst(energy_prm->ag_setup, energy_prm->ace_setup);
 	}
-
+	
 	//reset energy
 	mol_zero_gradients(energy_prm->ag);
-
 	//energy calculations
 	aceeng(energy_prm->ag, &energy, energy_prm->ace_setup, energy_prm->ag_setup);
 	vdweng(energy_prm->ag, &energy, energy_prm->ag_setup->nblst);
@@ -162,7 +202,7 @@ static lbfgsfloatval_t energy_func(
 		}
 	}
 
-	printf("%f.4\n", energy);
+	//printf("%.4f\n", energy);
 	return energy;
 }
 
@@ -273,7 +313,7 @@ void read_springset(struct mol_atom_group* ag, char *sfile, struct springset** s
          
            for(j = 0; j < nfix; j++)
            {
-           		printf("%i\n", (int)fix[j]);
+           		//printf("%i\n", (int)fix[j]);
                (*sprst)->springs[i].laspr[j] = fix[j];
            }
                
