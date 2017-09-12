@@ -38,6 +38,17 @@ Thumbs.db
 
 # Custom #
 ##########
-data
+data/*
+!data/mhc_alleles
+data/mhc_alleles/*
+!data/mhc_alleles/hla
+data/mhc_alleles/hla/*
+!data/mhc_alleles/hla/hla_prot.fasta
+
 build
-sandbox
+
+sandbox/*
+!sandbox/corrected_pdb
+!sandbox/detailed_mhc
+!sandbox/alleles_vs_pdb
+!sandbox/peptides_vs_pdb
